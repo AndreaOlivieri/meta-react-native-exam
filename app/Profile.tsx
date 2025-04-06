@@ -1,8 +1,10 @@
+import { Header } from "@/src/components/molecules/Header";
 import { Text, View } from "react-native";
 
 export default function Profile() {
   return (
     <View>
+      <Header />
       <Text>Profile</Text>
     </View>
   );

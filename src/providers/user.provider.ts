@@ -8,20 +8,27 @@ class UserProvider {
   public constructor() {}
 
   public async getUser(): Promise<TUser | null> {
-    try {
-      const value = await AsyncStorage.getItem("user");
-      if (value !== null) {
-        console.info("[getUser] Data retrieved:", value);
+    if (!this.user) {
+      try {
+        const value = await AsyncStorage.getItem("user");
+        console.info("[getUser] Data retrieved:");
+        if (value !== null) {
+          this.user = JSON.parse(value);
+        }
+      } catch (e) {
+        // do nothing
+        console.error("[getUser] Error:", e);
       }
-      return value;
-    } catch (e) {
-      // do nothing
-      console.error("[getUser] Error:", e);
-      return null;
     }
+    return this.user;
   }
-  public setUser(user: TUser) {
+  public async setUser(user: TUser) {
+    await AsyncStorage.setItem("user", JSON.stringify(user));
     this.user = user;
+  }
+
+  public clearUser() {
+    this.setUser(null);
   }
 }
 
