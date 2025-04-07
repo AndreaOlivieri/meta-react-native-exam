@@ -1,10 +1,13 @@
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import { StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function RootLayout() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.container}>
-      <Stack />
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <Slot />
     </View>
   );
 }
@@ -12,6 +15,6 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    paddingHorizontal: 16,
   },
 });
