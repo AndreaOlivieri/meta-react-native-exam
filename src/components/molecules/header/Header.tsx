@@ -22,13 +22,13 @@ export function Header() {
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
     flexDirection: "row",
+    flexWrap: "nowrap",
+    borderWidth: 1,
   },
   headerElement: {
     alignItems: "center",
     justifyContent: "center",
-    height: 80,
   },
   headerLeftSide: {
     flexGrow: 1,
