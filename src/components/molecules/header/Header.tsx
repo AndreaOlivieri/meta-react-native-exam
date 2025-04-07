@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Logo } from "../atoms/Logo";
-import { BackButton } from "../atoms/BackButton";
-import { UserIcon } from "../atoms/UserIcon";
+import { Logo } from "../../atoms/logo/Logo";
+import { BackButton } from "../../atoms/back-button/BackButton";
+import { UserIcon } from "../../atoms/user-icon/UserIcon";
 
 export function Header() {
   return (
