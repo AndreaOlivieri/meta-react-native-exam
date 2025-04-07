@@ -1,0 +1,27 @@
+import { COLORS } from "@/src/constants/color-palette";
+import React from "react";
+import { Pressable, StyleSheet, Text } from "react-native";
+
+type SubmitButtonProps = {
+  label: string;
+  onPress?: () => void;
+};
+
+export function SubmitButton({ label, onPress }: SubmitButtonProps) {
+  return (
+    <Pressable style={styles.button} onPress={onPress}>
+      <Text style={styles.text}>{label}</Text>
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: COLORS.yellow,
+    padding: 16,
+    borderRadius: 16,
+  },
+  text: {
+    textAlign: "center",
+  },
+});

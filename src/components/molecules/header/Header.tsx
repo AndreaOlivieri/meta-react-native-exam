@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     flexWrap: "nowrap",
-    borderWidth: 1,
   },
   headerElement: {
     alignItems: "center",
