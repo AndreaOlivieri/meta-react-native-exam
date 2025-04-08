@@ -1,22 +1,23 @@
-import userProvider from "@/src/providers/user.provider";
-import { useEffect, useState } from "react";
-import { Image, StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
+import { Image, Pressable, StyleSheet } from "react-native";
+import { useUser } from "../user-provider/user.context";
 
 export function UserIcon() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    userProvider.getUser().then((user) => {
-      setIsVisible(!!user);
-    });
-  }, []);
+  const router = useRouter();
+  const { user } = useUser();
 
   return (
-    <Image
-      source={require("@/assets/images/user-icon.png")}
-      style={[styles.userIcon, { opacity: isVisible ? 1 : 0 }]}
-      resizeMode="contain"
-    />
+    <Pressable
+      onPress={() => {
+        router.navigate("/Profile");
+      }}
+    >
+      <Image
+        source={require("@/assets/images/user-icon.png")}
+        style={[styles.userIcon, { opacity: !!user ? 1 : 0 }]}
+        resizeMode="contain"
+      />
+    </Pressable>
   );
 }
 

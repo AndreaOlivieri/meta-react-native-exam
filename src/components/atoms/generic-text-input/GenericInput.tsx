@@ -2,12 +2,16 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 
 type GenericTextInputProps = {
   label: string;
+  onChangeText: (text: string) => void;
 };
-export function GenericTextInput({ label }: GenericTextInputProps) {
+export function GenericTextInput({
+  label,
+  onChangeText,
+}: GenericTextInputProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.inputText} />
+      <TextInput style={styles.inputText} onChangeText={onChangeText} />
     </View>
   );
 }

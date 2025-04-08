@@ -1,13 +1,13 @@
-import { useRouter } from "expo-router";
-import { useEffect } from "react";
+import { useRouter, usePathname } from "expo-router";
 import { Image, Pressable, StyleSheet } from "react-native";
 
 export function BackButton() {
   const router = useRouter();
+  const pathName = usePathname();
 
   return (
     <Pressable
-      style={[styles.button, { opacity: router.canGoBack() ? 1 : 0 }]}
+      style={[styles.button, { opacity: pathName === "/Profile" ? 1 : 0 }]}
       onPress={() => router.back()}
     >
       <Image
