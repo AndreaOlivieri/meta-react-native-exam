@@ -35,6 +35,16 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
             setUser(null);
           });
         },
+        setUserProperty: (propertyName: string) => (value: string) => {
+          const newUser = {
+            ...(user ?? {}),
+            [propertyName]: value ?? "",
+          } as TUser;
+
+          return userService.setUser(newUser).then(() => {
+            setUser(newUser);
+          });
+        },
       }}
     >
       {children}

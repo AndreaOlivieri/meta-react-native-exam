@@ -1,9 +1,10 @@
-import { useRouter } from "expo-router";
+import { usePathname, useRouter } from "expo-router";
 import { Image, Pressable, StyleSheet } from "react-native";
 import { useUser } from "../user-provider/user.context";
 
 export function UserIcon() {
   const router = useRouter();
+  const pathName = usePathname();
   const { user } = useUser();
 
   return (
@@ -13,8 +14,12 @@ export function UserIcon() {
       }}
     >
       <Image
-        source={require("@/assets/images/user-icon.png")}
-        style={[styles.userIcon, { opacity: !!user ? 1 : 0 }]}
+        source={
+          user?.avatarUrl
+            ? { uri: user.avatarUrl }
+            : require("@/assets/images/user-icon.png")
+        }
+        style={[styles.userIcon, { opacity: pathName !== "/Onboarding" ? 1 : 0 }]}
         resizeMode="contain"
       />
     </Pressable>

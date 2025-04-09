@@ -11,7 +11,7 @@ export function HeroSection({ children }: { children?: React.ReactNode }) {
         <View style={styles.textContainer}>
           <Text style={styles.subtitle}>Chicago</Text>
           <Text style={styles.description}>
-            We are a familly owned Mediterranean restaurant, focused on
+            We are a family owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.
           </Text>
         </View>

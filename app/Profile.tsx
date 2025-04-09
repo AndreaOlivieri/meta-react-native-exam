@@ -1,10 +1,5 @@
-import { Header } from "@/src/components/molecules/header/Header";
-import { Text, View } from "react-native";
+import { PersonalInformationForm } from "@/src/components/organisms/personal-information-form/PersonalInformationForm";
 
 export default function Profile() {
-  return (
-    <View>
-      <Text>Profile</Text>
-    </View>
-  );
+  return <PersonalInformationForm />;
 }

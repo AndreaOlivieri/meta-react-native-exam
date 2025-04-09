@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type TUser = {
   firstName: string;
-  lastName?: string;
+  lastName: string;
   email: string;
   phoneNumber: string;
   avatarUrl?: string;
