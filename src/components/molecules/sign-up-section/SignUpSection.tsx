@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import { GenericTextInput } from "../../atoms/generic-text-input/GenericInput";
+import { GenericInput } from "../../atoms/generic-input/GenericInput";
 import { SubmitButton } from "../../atoms/submit-button/SubmitButton";
 import { useRef } from "react";
 import { useUser } from "../../atoms/user-provider/user.context";
@@ -14,17 +14,27 @@ export function SignUpSection() {
 
   return (
     <View style={styles.container}>
-      <GenericTextInput
+      <GenericInput
         label="First Name*"
         onChangeText={(text) => (firstNameRef.current = text)}
+        autoComplete="name"
+        inputMode="text"
+        placeholder="Mario"
       />
-      <GenericTextInput
+      <GenericInput
         label="Email*"
         onChangeText={(text) => (EmailRef.current = text)}
+        autoComplete="email"
+        inputMode="email"
+        autoCapitalize="none"
+        placeholder="mario.rossi@gmail.com"
       />
-      <GenericTextInput
+      <GenericInput
         label="Phone Number*"
         onChangeText={(text) => (PhoneNumberRef.current = text)}
+        autoComplete="tel"
+        inputMode="tel"
+        placeholder="+1 (123) 456-7890"
       />
       <SubmitButton
         label="Sign Up"
