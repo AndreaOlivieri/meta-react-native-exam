@@ -1,10 +1,15 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { Logo } from "../../atoms/logo/Logo";
 import { BackButton } from "../../atoms/back-button/BackButton";
 import { UserIcon } from "../../atoms/user-icon/UserIcon";
+import { usePathname, useRouter } from "expo-router";
+import { useUser } from "../../atoms/user-provider/user.context";
 
 export function Header() {
+  const router = useRouter();
+  const pathName = usePathname();
+  const { user } = useUser();
   return (
     <View style={styles.header}>
       <View style={[styles.headerElement, styles.headerLeftSide]}>
@@ -14,7 +19,14 @@ export function Header() {
         <Logo />
       </View>
       <View style={[styles.headerElement, styles.headerRightSide]}>
-        <UserIcon />
+        <Pressable
+          onPress={() => {
+            router.navigate("/Profile");
+          }}
+          style={{ opacity: pathName !== "/Onboarding" ? 1 : 0 }}
+        >
+          <UserIcon url={user?.avatarUrl} />
+        </Pressable>
       </View>
     </View>
   );

@@ -1,5 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { SubmitButton } from "../../atoms/submit-button/SubmitButton";
+import { UserIcon } from "../../atoms/user-icon/UserIcon";
 
 type AvatarInputProps = {
   avatarUrl?: string;
@@ -11,20 +12,11 @@ export function AvatarInput({
   onChange,
   onRemove,
 }: AvatarInputProps) {
-  console.log("avatarUrl", avatarUrl);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Avatar</Text>
       <View style={styles.avatarContainer}>
-        <Image
-          source={
-            avatarUrl
-              ? { uri: avatarUrl }
-              : require("@/assets/images/blank-profile-picture.webp")
-          }
-          style={[styles.userIcon]}
-          resizeMode="center"
-        />
+        <UserIcon url={avatarUrl} />
         <SubmitButton label="Change" onPress={onChange} />
         <SubmitButton label="Remove" onPress={onRemove} />
       </View>
@@ -40,7 +32,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
   },
-  userIcon: { width: 80, height: 80, borderRadius: "50%" },
   avatarContainer: {
     flexDirection: "row",
     gap: 22,
