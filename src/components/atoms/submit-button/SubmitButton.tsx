@@ -5,11 +5,12 @@ import { Pressable, StyleSheet, Text } from "react-native";
 type SubmitButtonProps = {
   label: string;
   onPress?: () => void;
+  style?: any;
 };
 
-export function SubmitButton({ label, onPress }: SubmitButtonProps) {
+export function SubmitButton({ label, onPress, style }: SubmitButtonProps) {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={[styles.button, style]} onPress={onPress}>
       <Text style={styles.text}>{label}</Text>
     </Pressable>
   );

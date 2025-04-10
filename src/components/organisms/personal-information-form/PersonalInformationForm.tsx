@@ -5,10 +5,13 @@ import { useUser } from "../../atoms/user-provider/user.context";
 import { TUser } from "../../atoms/user-provider/user.service";
 import { AvatarInput } from "../../molecules/avatar-input/AvatarInput";
 import { EmailNotificationPreferences } from "../../molecules/email-notification-preferences/EmailNotificationPreferences";
+import { SubmitButton } from "../../atoms/submit-button/SubmitButton";
+import { useRouter } from "expo-router";
 
 export function PersonalInformationForm() {
-  const { user } = useUser();
+  const { user, setUser, clearUser } = useUser();
   const [newUser, setNewUser] = useState<TUser>(user);
+  const router = useRouter();
 
   const setNewUserProperty = (fieldName: string) => (value: any) => {
     const _newUser = {
@@ -32,8 +35,28 @@ export function PersonalInformationForm() {
       />
       <PersonalInfoInputs user={newUser} setUserProperty={setNewUserProperty} />
       <EmailNotificationPreferences
+        preferences={newUser?.notificationPreferences ?? {}}
         onChange={setNewUserProperty("notificationPreferences")}
       />
+      <SubmitButton
+        label="Log out"
+        onPress={() => {
+          clearUser();
+          router.navigate("/Onboarding");
+        }}
+      />
+      <View style={styles.saveAndDiscardChangesButtonContainer}>
+        <SubmitButton
+          label="Discard changes"
+          style={styles.discardChangesButton}
+          onPress={() => setNewUser(user)}
+        />
+        <SubmitButton
+          label="Save changes"
+          style={styles.saveChangesButton}
+          onPress={() => setUser(newUser)}
+        />
+      </View>
     </View>
   );
 }
@@ -42,10 +65,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     paddingHorizontal: 16,
-    paddingTop: 16,
-    gap: 16,
+    gap: 14,
   },
   title: {
     fontSize: 22,
   },
+  saveAndDiscardChangesButtonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 8,
+  },
+  discardChangesButton: {
+    flexGrow: 1,
+  },
+  saveChangesButton: { flexGrow: 1 },
 });

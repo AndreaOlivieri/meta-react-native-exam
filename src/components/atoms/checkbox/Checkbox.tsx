@@ -4,13 +4,12 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 type CheckboxProps = {
   label: string;
   onChange: (checked: boolean) => void;
+  checked?: boolean;
 };
-export function Checkbox({ onChange, label }: CheckboxProps) {
-  const [checked, setChecked] = useState(false);
+export function Checkbox({ onChange, label, checked = false }: CheckboxProps) {
 
   const onPressHandler = () => {
     onChange(!checked);
-    setChecked(!checked);
   };
 
   return (
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 10,
+    paddingVertical: 6,
   },
   checkbox: {
     width: 24,
