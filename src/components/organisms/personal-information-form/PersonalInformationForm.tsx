@@ -4,16 +4,18 @@ import { PersonalInfoInputs } from "../../molecules/personal-info-inputs/Persona
 import { useUser } from "../../atoms/user-provider/user.context";
 import { TUser } from "../../atoms/user-provider/user.service";
 import { AvatarInput } from "../../molecules/avatar-input/AvatarInput";
+import { EmailNotificationPreferences } from "../../molecules/email-notification-preferences/EmailNotificationPreferences";
 
 export function PersonalInformationForm() {
   const { user } = useUser();
   const [newUser, setNewUser] = useState<TUser>(user);
 
-  const setNewUserProperty = (fieldName: string) => (value: string) => {
-    setNewUser({
+  const setNewUserProperty = (fieldName: string) => (value: any) => {
+    const _newUser = {
       ...newUser,
       [fieldName]: value,
-    } as TUser);
+    } as TUser;
+    setNewUser(_newUser);
   };
 
   return (
@@ -29,6 +31,9 @@ export function PersonalInformationForm() {
         onRemove={() => setNewUserProperty("avatarUrl")("")}
       />
       <PersonalInfoInputs user={newUser} setUserProperty={setNewUserProperty} />
+      <EmailNotificationPreferences
+        onChange={setNewUserProperty("notificationPreferences")}
+      />
     </View>
   );
 }
