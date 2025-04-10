@@ -9,7 +9,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // todo - need to remove clearUser
-    userService.clearUser().then(() => {
+    // userService.clearUser().then(() => {
       userService.getUser().then((user) => {
         setUser(user);
         if (user) {
@@ -18,7 +18,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
           router.replace("/Onboarding");
         }
       });
-    });
+    // });
   }, []);
 
   return (

@@ -13,7 +13,7 @@ export function PersonalInfoInputs({
   return (
     <>
       <GenericInput
-        label="First Name*"
+        label="First Name"
         onChangeText={setUserProperty("firstName")}
         autoComplete="name"
         inputMode="text"
@@ -21,7 +21,7 @@ export function PersonalInfoInputs({
         value={user?.firstName}
       />
       <GenericInput
-        label="Last Name*"
+        label="Last Name"
         onChangeText={setUserProperty("lastName")}
         autoComplete="name"
         inputMode="text"
@@ -29,7 +29,7 @@ export function PersonalInfoInputs({
         value={user?.lastName}
       />
       <GenericInput
-        label="Email*"
+        label="Email"
         onChangeText={setUserProperty("email")}
         autoComplete="email"
         inputMode="email"
@@ -38,7 +38,7 @@ export function PersonalInfoInputs({
         value={user?.email}
       />
       <GenericInput
-        label="Phone Number*"
+        label="Phone Number"
         onChangeText={setUserProperty("phoneNumber")}
         autoComplete="tel"
         inputMode="tel"

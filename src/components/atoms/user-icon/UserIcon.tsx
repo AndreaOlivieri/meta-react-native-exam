@@ -17,7 +17,7 @@ export function UserIcon() {
         source={
           user?.avatarUrl
             ? { uri: user.avatarUrl }
-            : require("@/assets/images/user-icon.png")
+            : require("@/assets/images/blank-profile-picture.webp")
         }
         style={[styles.userIcon, { opacity: pathName !== "/Onboarding" ? 1 : 0 }]}
         resizeMode="contain"
