@@ -15,17 +15,14 @@ export function SignUpSection() {
       <PersonalInfoInputs user={user} setUserProperty={setUserProperty} />
       <SubmitButton
         label="Sign Up"
+        enabled={
+          !!user?.firstName &&
+          !!user?.lastName &&
+          !!user?.email &&
+          !!user?.phoneNumber
+        }
         onPress={() => {
-          if (
-            user?.firstName &&
-            user?.lastName &&
-            user?.email &&
-            user?.phoneNumber
-          ) {
-            router.replace("/Home");
-          } else {
-            alert("Add all missing info");
-          }
+          router.replace("/Home");
         }}
       />
     </View>

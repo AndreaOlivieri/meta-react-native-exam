@@ -6,11 +6,20 @@ type SubmitButtonProps = {
   label: string;
   onPress?: () => void;
   style?: any;
+  enabled: boolean;
 };
 
-export function SubmitButton({ label, onPress, style }: SubmitButtonProps) {
+export function SubmitButton({
+  label,
+  onPress,
+  enabled,
+  style,
+}: SubmitButtonProps) {
   return (
-    <Pressable style={[styles.button, style]} onPress={onPress}>
+    <Pressable
+      style={[styles.button, !enabled && styles.disabledButton, style]}
+      onPress={enabled ? onPress : undefined}
+    >
       <Text style={styles.text}>{label}</Text>
     </Pressable>
   );
@@ -21,6 +30,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.yellow,
     padding: 16,
     borderRadius: 16,
+  },
+  disabledButton: {
+    backgroundColor: COLORS.grey,
   },
   text: {
     textAlign: "center",
