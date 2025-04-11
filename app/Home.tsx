@@ -1,11 +1,13 @@
-import { Header } from "@/src/components/molecules/header/Header";
+import SearchBar from "@/src/components/atoms/search-bar/SearchBar";
 import { HeroSection } from "@/src/components/molecules/hero-section/HeroSection";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 export default function Home() {
   return (
     <View>
-      <HeroSection />
+      <HeroSection>
+        <SearchBar />
+      </HeroSection>
     </View>
   );
 }
