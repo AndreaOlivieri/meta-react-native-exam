@@ -6,19 +6,19 @@ type SubmitButtonProps = {
   label: string;
   onPress?: () => void;
   style?: any;
-  enabled: boolean;
+  disabled?: boolean;
 };
 
 export function SubmitButton({
   label,
   onPress,
-  enabled,
+  disabled = false,
   style,
 }: SubmitButtonProps) {
   return (
     <Pressable
-      style={[styles.button, !enabled && styles.disabledButton, style]}
-      onPress={enabled ? onPress : undefined}
+      style={[styles.button, disabled && styles.disabledButton, style]}
+      onPress={!disabled ? onPress : undefined}
     >
       <Text style={styles.text}>{label}</Text>
     </Pressable>

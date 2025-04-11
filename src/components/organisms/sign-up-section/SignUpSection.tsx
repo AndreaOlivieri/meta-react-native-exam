@@ -15,11 +15,11 @@ export function SignUpSection() {
       <PersonalInfoInputs user={user} setUserProperty={setUserProperty} />
       <SubmitButton
         label="Sign Up"
-        enabled={
-          !!user?.firstName &&
-          !!user?.lastName &&
-          !!user?.email &&
-          !!user?.phoneNumber
+        disabled={
+          !user?.firstName ||
+          !user?.lastName ||
+          !user?.email ||
+          !user?.phoneNumber
         }
         onPress={() => {
           router.replace("/Home");
