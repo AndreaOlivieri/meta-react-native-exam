@@ -18,5 +18,5 @@ export function UserIcon({ url }: UserIconProps) {
 }
 
 const styles = StyleSheet.create({
-  userIcon: { width: 80, height: 80, borderRadius: "50%" },
+  userIcon: { width: 70, height: 70, borderRadius: "50%" },
 });
