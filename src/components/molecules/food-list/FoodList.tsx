@@ -28,7 +28,7 @@ const FoodList = ({ foodMenu }: FoodListProps) => {
             <View style={styles.foodRightInnerContainer}>
               <Image
                 source={food.image}
-                resizeMode="contain"
+                resizeMode="cover"
                 style={styles.foodImage}
               />
             </View>
